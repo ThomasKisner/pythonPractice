@@ -20,24 +20,22 @@ def performMath():
     else: 
         equation = input(str(previous))
 
-    
+    #Checking if someone wants to quit or clear
     if equation == 'quit':
         print('Googbye, human')
         run = False
     elif equation == 'clear':
         previous = 0
         print('cleared\n')
+    #using regex to strip extraneous chars, helps to make eval statement safe.
     else: 
         equation = re.sub('[a-zA-Z,.:()" "]', '', equation)
         if previous == 0:
+            #if no previous value exists just evaluation input equation
             previous = eval(equation)
         else:
+            #if previous value exists evaluate it with most recent input
             previous = eval(str(previous)+equation) 
-
-       
-        
-        
- 
 
 while run:
     performMath()
